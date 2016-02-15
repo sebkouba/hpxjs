@@ -4,7 +4,7 @@
 
 
 import React from 'react';
-import SessionExercise from './SessionExercise'
+import SessionExercise from './forms/SessionExercise'
 
 export default class TrainingSession extends React.Component
 {

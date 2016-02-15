@@ -7,7 +7,7 @@ class FormPOC extends React.Component {
     return (
       <div>
         <h4>My Form </h4>
-        <CommentBox url="/data/entries" pollInterval={9000} />
+        <CommentBox url="/data/entries" pollInterval={2000} />
       </div>
     )
   }

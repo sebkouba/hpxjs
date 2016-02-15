@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { NICE, SUPER_NICE } from './colors';
-import Counter from './Counter';
 import Home from './Home';
-import TwoCounters from './TwoCounters'
 
 export default class extends Component {
   render() {
@@ -15,7 +12,7 @@ export default class extends Component {
             <Link to="/ts"> TS </Link>
             <Link to="/"> Home </Link>
             <Link to="/form"> Form </Link>
-            <Link to="/data/entries"> Entries </Link>
+            <Link to="/entries"> Entries </Link>
           </div>
         </nav>
         <div className="container">

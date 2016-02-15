@@ -1,5 +1,5 @@
 import React from 'react';
-import SessionExercise from './SessionExercise'
+import SessionExercise from './forms/SessionExercise'
 
 class TrainingSession extends React.Component
 {
@@ -12,6 +12,7 @@ class TrainingSession extends React.Component
 
   addExerciseClass(){
     console.log("add Class Ex");
+    // should this not be data rather than state? No - it changes
     this.setState(
       {instances: this.state.instances.concat(<SessionExercise exerciseName="Added Class Ex"/>)}
     )

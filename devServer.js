@@ -82,6 +82,17 @@ app.post('/data/entries',function(req,res){
   });
 });
 
+app.post('/data2/entries',function(req,res){
+  var e_id = Date.now();
+  var title = req.body.title;
+  var comment = req.body.comment;
+
+  db.collection("entries").insert({
+    id: e_id,
+    title: title,
+    comment: comment
+  });
+});
 mongodb.MongoClient.connect(process.env.MONGO2, function(err, database){
   if (err) throw err;
 

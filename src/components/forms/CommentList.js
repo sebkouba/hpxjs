@@ -3,6 +3,8 @@ import Comment from './Comment';
 /**
  * maps props.data from CommentList into individual Comment components
  * and renders them
+ * IN: props.data
+ * OUT: CommentInstances
  * */
 class CommentList extends React.Component {
   render() {

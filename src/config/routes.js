@@ -2,6 +2,8 @@ var React = require('react');
 import Main from '../components/Main';
 import Home from '../components/Home';
 import FormPOC from '../components/forms/FormPOC';
+import Entry from '../components/forms/Entry';
+import EntryContainer from '../components/forms/EntryContainer';
 import TrainingSession from '../components/TrainingSession';
 
 var Router = require('react-router');
@@ -14,6 +16,7 @@ export default (
   <Route path="/" component={Main}>
     <Route path="/ts" component={TrainingSession}/>
     <Route path="/form" component={FormPOC}/>
+    <Route path="/entries" component={EntryContainer}/>
     <IndexRoute component={Home}/>
   </Route>
 );

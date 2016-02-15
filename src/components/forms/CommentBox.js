@@ -62,7 +62,11 @@ class CommentBox extends React.Component {
 
   componentDidMount() {
     this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    this.interval = setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {

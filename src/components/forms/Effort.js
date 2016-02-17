@@ -3,7 +3,7 @@ import React from 'react';
 var divStyle = {
   border: "2px solid red",
   padding: "2px 2px 2px 6px",
-  width: "70px"
+  width: "120px"
 };
 var boxStyle = {
   width: "50px"
@@ -19,29 +19,33 @@ class Effort extends React.Component {
   }
 
   handleWeightChange = e => {
-    this.setState({weight: e.target.value});
+    // seems like a waste to have this as extra function but can't think of alternative
+    //this.setState({weight: e.target.value});
+    this.props.updateWeight(e.target.value, this.props.effortIndex);
+    this.state.weight = e.target.value;
   };
 
   handleRepChange = e => {
-    this.setState({reps: e.target.value})
+    this.props.updateReps(e.target.value, this.props.effortIndex);
+    this.state.reps = e.target.value;
   };
 
   render(){
     return (
       <div className="effort" style={divStyle}>
-        <i>Effort</i>
+        <i>Effort</i> <br />
         <input
           type="text"
           placeholder="weight"
-          style={boxStyle}
           value={this.state.weight}
+          style={boxStyle}
           onChange={this.handleWeightChange}
-        />
+        /> <br />eIndex: {this.props.effortIndex}
         <input
           type="text"
           placeholder="reps"
-          style={boxStyle}
           value={this.state.reps}
+          style={boxStyle}
           onChange={this.handleRepChange}
         />
       </div>

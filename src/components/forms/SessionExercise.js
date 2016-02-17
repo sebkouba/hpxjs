@@ -1,6 +1,8 @@
 import React from 'react';
 import Effort from './Effort'
 
+// Effort Data is kept here!
+
 var divStyle = {
   border: "3px solid blue",
   padding: "10px",
@@ -12,7 +14,7 @@ class SessionExercise extends React.Component {
     super(props);
     this.state = {
       efforts: [
-        {weight: 100, reps: 5 }
+        {weight: "", reps: "" }
       ]
     }
   }
@@ -29,10 +31,9 @@ class SessionExercise extends React.Component {
      * or simply copy laste elemnt in array!
      * which copies the props, not the state!
      * */
-    //var lastElement = this.state.efforts[this.state.efforts.length - 1];
-    //var newEfforts = this.state.efforts.concat(lastElement);
-    //this.setState({efforts: newEfforts});
-    console.log(React.Children.count())
+    var lastElement = this.state.efforts[this.state.efforts.length - 1];
+    var newEfforts = this.state.efforts.concat(lastElement);
+    this.setState({efforts: newEfforts});
   };
 
   removeEffort = (e) => {
@@ -43,16 +44,28 @@ class SessionExercise extends React.Component {
     });
   };
 
-  updateWeight = (val) => {
-    // determine which set to change the values in
-    // how do identify this? pass and send back an effort identifier?
+  updateWeight = (newWeight, effortIndex) => {
+    var newEfforts = this.state.efforts;
+    newEfforts[effortIndex].weight = newWeight;
+    this.setState({efforts: newEfforts});
+    console.log("effort index: " + effortIndex + "==>");
+    console.log(this.state.efforts[effortIndex]);
+  };
 
-    // set new state
+  updateReps = (newReps, effortIndex) => {
+    var newEfforts = this.state.efforts;
+    newEfforts[effortIndex].reps = newReps;
+    this.setState({efforts: newEfforts});
+    console.log("effort index: " + effortIndex + "==>");
+    console.log(this.state.efforts[effortIndex]);
   };
 
   render() {
     var efforts = this.state.efforts.map( (effort, effIndex) => {
-      return <Effort key={effIndex} weight={effort.weight} reps={effort.reps}/>
+      return <Effort key={effIndex} effortIndex={effIndex}
+                     updateWeight={this.updateWeight}
+                     updateReps={this.updateReps}
+                     weight={effort.weight} reps={effort.reps}/>
     });
     return (
       <div className="sessionExercise" style={divStyle}>

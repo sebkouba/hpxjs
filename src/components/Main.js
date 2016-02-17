@@ -13,6 +13,7 @@ export default class extends Component {
             <Link to="/"> Home </Link>
             <Link to="/form"> Form </Link>
             <Link to="/entries"> Entries </Link>
+            <Link to="/poc"> POC </Link>
           </div>
         </nav>
         <div className="container">

@@ -5,6 +5,7 @@ import FormPOC from '../components/forms/FormPOC';
 import Entry from '../components/forms/Entry';
 import EntryContainer from '../components/forms/EntryContainer';
 import TrainingSession from '../components/TrainingSession';
+import Parent from '../components/poc/Parent';
 
 var Router = require('react-router');
 var Route = Router.Route;
@@ -17,6 +18,7 @@ export default (
     <Route path="/ts" component={TrainingSession}/>
     <Route path="/form" component={FormPOC}/>
     <Route path="/entries" component={EntryContainer}/>
+    <Route path="/poc" component={Parent}/>
     <IndexRoute component={Home}/>
   </Route>
 );

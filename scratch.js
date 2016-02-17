@@ -1,71 +1,52 @@
-console.clear();
 
-var TaskList = React.createClass({
-    deleteElement:function(){
-        console.log("remove");
-    },
+var Example = React.createClass({
+  getInitialState: function()
+  {
+      return ({
+          data: 'test'
+      });
+  },
+  render: function() {
+    return (
+      <div>
+        <C1 onUpdate={this.onUpdate}/>
+        <C2 data={this.state.data}/>
+      </div>
+      )
+  },
+  onUpdate: function(val){
+      this.setState({
+          data: val
+      });
+  }
+});
 
-    render: function(){
-
-
-        return <ul>
-            {this.props.items.map((task, taskIndex) =>
-                <li key={taskIndex}>
-                    {task}
-                    <button onClick={this.props.deleteTask} value={taskIndex}> Delete </button>
-                </li>
-            )}
-        </ul>;
-    }
- });
-
-var TaskApp = React.createClass({
-    getInitialState: function(){
-        return {
-             items: ['a', 'b', 'c', 'd', 'e', 'f', 'g'],
-             task: ''
-        }
-    },
-
-    deleteTask: function(e) {
-        var taskIndex = parseInt(e.target.value, 10);
-        console.log('remove task: %d', taskIndex, this.state.items[taskIndex]);
-        this.setState(state => {
-            state.items.splice(taskIndex, 1);
-            return {items: state.items};
-        });
-    },
-
-    onChange: function(e) {
-        this.setState({ task: e.target.value });
-    },
-
-
-
-    addTask:function (e){
-        this.setState({
-            items: this.state.items.concat([this.state.task]),
-
-            task: ''
-        })
-
-        e.preventDefault();
-    },
-
-    render: function(){
-        return(
+var C1 = React.createClass({
+    render: function()
+    {
+        return (
             <div>
-                <h1>My Task </h1>
-                <TaskList items={this.state.items} deleteTask={this.deleteTask} />
-
-                <form onSubmit={this.addTask}>
-                    <input onChange={this.onChange} type="text" value={this.state.task}/>
-                    <button> Add Task </button>
-                </form>
+                <input type="text" ref="myInput" />
+                <input type="button" onClick={this.update} value="Update C2"/>
             </div>
-        );
+        )
+    },
+    update: function()
+    {
+        var theVal = this.refs.myInput.getDOMNode().value;
+        this.props.onUpdate(theVal);
     }
 });
 
-React.render(<TaskApp />, document.getElementById('container'));
+var C2 = React.createClass({
+    render: function()
+    {
+        return (
+            <div>
+                {this.props.data}
+            </div>
+        )
+    }
+});
 
+React.renderComponent(<Example/>, document.body);

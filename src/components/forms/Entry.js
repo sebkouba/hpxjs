@@ -60,18 +60,16 @@ class Entry extends React.Component {
     });
   };
 
-  addExercise() {
+  addExercise = () => {
     var newExercises = this.state.exercises.concat([{id:Date.now(), name:"From Button" + Date.now()}]);
     this.setState({exercises: newExercises});
-  }
+  };
 
+  /** manipulates state directly :/ */
   deleteExercise = (e) => { // event is the parameter
-    console.log("delete Ex - - - - - - - -");
-    console.log("e.target.value: " + e.target.value);
-    console.log("e.target: " + e.target);
+    e.preventDefault();
     var exerciseIndex = parseInt(e.target.value, 10);
-    console.log("remove task %d", exerciseIndex, this.state.exercises[exerciseIndex]);
-
+    console.log("ex Index: " + exerciseIndex);
     this.setState( state => {
       state.exercises.splice(exerciseIndex, 1);
       return {exercises: state.exercises};
@@ -83,13 +81,13 @@ class Entry extends React.Component {
     var exercises = this.state.exercises.map( (ex, exIndex) => {
       return <SessionExercise key={exIndex} exerciseName={ex.name}
                               deleteExercise={this.deleteExercise}
-                              value={exIndex} />
+                              valuex={exIndex} />
     });
     return (
       <div id="entryform" style={divStyle}>
         <i>Entry</i>
         <h2>New Entry</h2>
-        <button onClick={this.addExercise.bind(this)}>Add v Class</button>
+        <button onClick={this.addExercise}>Add v Class</button>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -105,6 +103,7 @@ class Entry extends React.Component {
           />
 
           {exercises}
+
           <input type="submit" value="Post"/>
         </form>
       </div>

@@ -3,7 +3,7 @@ import React from 'react';
 var divStyle = {
   border: "2px solid red",
   padding: "2px 2px 2px 6px",
-  width: "120px"
+  width: "100px"
 };
 var boxStyle = {
   width: "50px"
@@ -40,7 +40,7 @@ class Effort extends React.Component {
           value={this.state.weight}
           style={boxStyle}
           onChange={this.handleWeightChange}
-        /> <br />eIndex: {this.props.effortIndex}
+        /> <br />
         <input
           type="text"
           placeholder="reps"

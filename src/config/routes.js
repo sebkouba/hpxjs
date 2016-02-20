@@ -4,7 +4,7 @@ import Home from '../components/Home';
 import FormPOC from '../components/forms/FormPOC';
 import Entry from '../components/forms/Entry';
 import EntryContainer from '../components/forms/EntryContainer';
-import TrainingSession from '../components/TrainingSession';
+import TrainingSession from '../components/_old_TrainingSession';
 import Parent from '../components/poc/Parent';
 
 var Router = require('react-router');

@@ -14,14 +14,14 @@ class SessionExercise extends React.Component {
     super(props);
     this.state = {
       efforts: [
-        {weight: "", reps: "" }
+        {weight: "", reps: "", id: Date.now() }
       ]
     }
   }
 
   addEffort = (e) => {
     e.preventDefault();
-    var newEfforts = this.state.efforts.concat([{weight: "", reps: ""}]);
+    var newEfforts = this.state.efforts.concat([{weight: "", reps: "", id: Date.now() }]);
     this.setState({efforts: newEfforts});
   };
 
@@ -31,9 +31,11 @@ class SessionExercise extends React.Component {
      * or simply copy laste elemnt in array!
      * which copies the props, not the state!
      * */
-    var lastElement = this.state.efforts[this.state.efforts.length - 1];
-    var newEfforts = this.state.efforts.concat(lastElement);
-    this.setState({efforts: newEfforts});
+
+    var newEfforts = {...this.state.efforts[this.state.efforts.length - 1]};
+    newEfforts.id = Date.now();
+    var newState = this.state.efforts.concat([newEfforts]);
+    this.setState({efforts: newState});
   };
 
   removeEffort = (e) => {
@@ -62,7 +64,7 @@ class SessionExercise extends React.Component {
 
   render() {
     var efforts = this.state.efforts.map( (effort, effIndex) => {
-      return <Effort key={effIndex} effortIndex={effIndex}
+      return <Effort key={effort.id} effortIndex={effIndex}
                      updateWeight={this.updateWeight}
                      updateReps={this.updateReps}
                      weight={effort.weight} reps={effort.reps}/>

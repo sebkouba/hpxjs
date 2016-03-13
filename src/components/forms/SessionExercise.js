@@ -14,7 +14,7 @@ class SessionExercise extends React.Component {
     super(props);
     this.state = {
       efforts: [
-        {weight: "", reps: "", id: Date.now() }
+        //{weight: "", reps: "", id: Date.now() }
       ]
     }
   }
@@ -46,27 +46,28 @@ class SessionExercise extends React.Component {
     });
   };
 
-  updateWeight = (newWeight, effortIndex) => {
-    var newEfforts = this.state.efforts;
-    newEfforts[effortIndex].weight = newWeight;
-    this.setState({efforts: newEfforts});
-    console.log("effort index: " + effortIndex + "==>");
-    console.log(this.state.efforts[effortIndex]);
-  };
-
-  updateReps = (newReps, effortIndex) => {
-    var newEfforts = this.state.efforts;
-    newEfforts[effortIndex].reps = newReps;
-    this.setState({efforts: newEfforts});
-    console.log("effort index: " + effortIndex + "==>");
-    console.log(this.state.efforts[effortIndex]);
-  };
+  //updateWeight = (newWeight, effortIndex) => {
+  //  var newEfforts = this.state.efforts;
+  //  newEfforts[effortIndex].weight = newWeight;
+  //  this.setState({efforts: newEfforts});
+  //  console.log("effort index: " + effortIndex + "==>");
+  //  console.log(this.state.efforts[effortIndex]);
+  //};
+  //
+  //updateReps = (newReps, effortIndex) => {
+  //  var newEfforts = this.state.efforts;
+  //  newEfforts[effortIndex].reps = newReps;
+  //  this.setState({efforts: newEfforts});
+  //  console.log("effort index: " + effortIndex + "==>");
+  //  console.log(this.state.efforts[effortIndex]);
+  //};
 
   render() {
-    var efforts = this.state.efforts.map( (effort, effIndex) => {
+    var efforts = this.props.efforts.map( (effort, effIndex) => {
       return <Effort key={effort.id} effortIndex={effIndex}
-                     updateWeight={this.updateWeight}
-                     updateReps={this.updateReps}
+                     updateWeight={this.props.updateWeight}
+                     updateReps={this.props.updateReps}
+                     exIndex={this.props.exIndex}
                      weight={effort.weight} reps={effort.reps}/>
     });
     return (
@@ -80,7 +81,7 @@ class SessionExercise extends React.Component {
 
         <button onClick={this.addEffort} > Add Set </button>
         <button onClick={this.removeEffort} > Rem Set </button>
-        <button onClick={this.copyEffort} > Copy Set </button>
+        <button onClick={this.props.copyEffort} > Copy Set </button>
 
         <h4>Exercise Component: {this.props.exerciseName}</h4>
         { efforts }

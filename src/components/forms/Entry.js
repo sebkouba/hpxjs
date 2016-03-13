@@ -66,7 +66,13 @@ class Entry extends React.Component {
       console.log("id: " + ex.exId);
       return <SessionExercise key={ex.exId} exerciseName={ex.name}
                               deleteExercise={this.props.deleteExercise}
-                              valuex={exIndex} />
+                              valuex={exIndex}
+                              exIndex={exIndex}
+                              efforts={ex.efforts}
+                              updateWeight={this.props.updateWeight}
+                              updateReps={this.props.updateReps}
+                              copyEffort={this.props.copyEffort}
+      />
     });
     return (
       <div id="entryform" style={divStyle}>

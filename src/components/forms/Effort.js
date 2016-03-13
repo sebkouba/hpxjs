@@ -21,12 +21,12 @@ class Effort extends React.Component {
   handleWeightChange = e => {
     // seems like a waste to have this as extra function but can't think of alternative
     //this.setState({weight: e.target.value});
-    this.props.updateWeight(e.target.value, this.props.effortIndex);
-    this.state.weight = e.target.value;
+    this.props.updateWeight(e.target.value, this.props.effortIndex, this.props.exIndex);
+    this.state.weight = e.target.value; // this is super bad! use setState!
   };
 
   handleRepChange = e => {
-    this.props.updateReps(e.target.value, this.props.effortIndex);
+    this.props.updateReps(e.target.value, this.props.effortIndex, this.props.exIndex);
     this.state.reps = e.target.value;
   };
 

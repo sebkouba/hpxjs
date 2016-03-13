@@ -69,7 +69,9 @@ class OtherChild extends React.Component {
     return (
       <div>
         <h4>OtherChild</h4>
-        Value in OtherChild props: {this.props.passedVal}
+        Value in OtherChild props : {this.props.passedVal}
+        <h1>Hallo Leuli</h1>
+        Sean cool. Test
       </div>
     )
   }
